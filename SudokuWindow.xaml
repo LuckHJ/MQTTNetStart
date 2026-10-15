@@ -1,0 +1,84 @@
+<Window x:Class="CabinetFaceWpf.SudokuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Width="260"
+        Height="340"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        Background="#171A21"
+        FontFamily="Segoe UI"
+        PreviewKeyDown="Window_PreviewKeyDown">
+    <Window.Resources>
+        <Style x:Key="ActionButton" TargetType="Button">
+            <Setter Property="Background" Value="#343B49"/>
+            <Setter Property="Foreground" Value="#E8ECF2"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="6,2"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="4" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#465164"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#252B35"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Row="0" Margin="1,0,1,4"
+                   MouseLeftButtonDown="Header_MouseLeftButtonDown">
+            <TextBlock Text="数独" FontSize="13" FontWeight="Bold" Foreground="#E8ECF2"/>
+            <TextBlock x:Name="txtStatus" Text="选空格后输入数字" FontSize="9"
+                       Foreground="#A8B0BE" VerticalAlignment="Center"
+                       HorizontalAlignment="Right" DockPanel.Dock="Right"/>
+        </DockPanel>
+
+        <Border Grid.Row="1" BorderBrush="#626B7A" BorderThickness="1" CornerRadius="2"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Viewbox Stretch="Uniform">
+                <Grid x:Name="BoardGrid" Width="234" Height="234" Background="#222731"/>
+            </Viewbox>
+        </Border>
+
+        <UniformGrid Grid.Row="2" Columns="9" Margin="0,4,0,0">
+            <Button Content="1" Tag="1" Click="NumberButton_Click" Margin="0.5" Padding="0,2" FontSize="9" Style="{StaticResource ActionButton}"/>
+            <Button Content="2" Tag="2" Click="NumberButton_Click" Margin="0.5" Padding="0,2" FontSize="9" Style="{StaticResource ActionButton}"/>
+            <Button Content="3" Tag="3" Click="NumberButton_Click" Margin="0.5" Padding="0,2" FontSize="9" Style="{StaticResource ActionButton}"/>
+            <Button Content="4" Tag="4" Click="NumberButton_Click" Margin="0.5" Padding="0,2" FontSize="9" Style="{StaticResource ActionButton}"/>
+            <Button Content="5" Tag="5" Click="NumberButton_Click" Margin="0.5" Padding="0,2" FontSize="9" Style="{StaticResource ActionButton}"/>
+            <Button Content="6" Tag="6" Click="NumberButton_Click" Margin="0.5" Padding="0,2" FontSize="9" Style="{StaticResource ActionButton}"/>
+            <Button Content="7" Tag="7" Click="NumberButton_Click" Margin="0.5" Padding="0,2" FontSize="9" Style="{StaticResource ActionButton}"/>
+            <Button Content="8" Tag="8" Click="NumberButton_Click" Margin="0.5" Padding="0,2" FontSize="9" Style="{StaticResource ActionButton}"/>
+            <Button Content="9" Tag="9" Click="NumberButton_Click" Margin="0.5" Padding="0,2" FontSize="9" Style="{StaticResource ActionButton}"/>
+        </UniformGrid>
+
+        <DockPanel Grid.Row="3" Margin="0,4,0,0">
+            <Button Content="擦除" Click="ClearButton_Click" Style="{StaticResource ActionButton}"
+                    Background="#454D5B" Padding="5,2" FontSize="10"/>
+            <Button Content="检查" Click="CheckButton_Click" Style="{StaticResource ActionButton}"
+                    Padding="5,2" FontSize="10" Margin="4,0,0,0" DockPanel.Dock="Right"/>
+            <Button Content="新游戏" Click="NewGameButton_Click" Style="{StaticResource ActionButton}"
+                    Padding="5,2" FontSize="10" Margin="4,0,0,0" DockPanel.Dock="Right"/>
+        </DockPanel>
+    </Grid>
+</Window>

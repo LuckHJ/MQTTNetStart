@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\project\\hjy\\study\\net\\test\\CabinetFaceWpf\\CabinetFaceWpf.csproj": {}
+    "E:\\project\\hjy\\git\\net\\MQTTNetStart\\CabinetFaceWpf.csproj": {}
   },
   "projects": {
-    "E:\\project\\hjy\\study\\net\\test\\CabinetFaceWpf\\CabinetFaceWpf.csproj": {
+    "E:\\project\\hjy\\git\\net\\MQTTNetStart\\CabinetFaceWpf.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\project\\hjy\\study\\net\\test\\CabinetFaceWpf\\CabinetFaceWpf.csproj",
+        "projectUniqueName": "E:\\project\\hjy\\git\\net\\MQTTNetStart\\CabinetFaceWpf.csproj",
         "projectName": "CabinetFaceWpf",
-        "projectPath": "E:\\project\\hjy\\study\\net\\test\\CabinetFaceWpf\\CabinetFaceWpf.csproj",
+        "projectPath": "E:\\project\\hjy\\git\\net\\MQTTNetStart\\CabinetFaceWpf.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "E:\\project\\hjy\\study\\net\\test\\CabinetFaceWpf\\obj\\",
+        "outputPath": "E:\\project\\hjy\\git\\net\\MQTTNetStart\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CabinetFaceWpf")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c32d1184c903042887bfc3082c3f4ef0c8bceaf9")]
 [assembly: System.Reflection.AssemblyProductAttribute("CabinetFaceWpf")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CabinetFaceWpf")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JH7qhFHNSco=",
+  "dgSpecHash": "kEmmI6sROhU=",
   "success": true,
-  "projectFilePath": "E:\\project\\hjy\\study\\net\\test\\CabinetFaceWpf\\CabinetFaceWpf.csproj",
+  "projectFilePath": "E:\\project\\hjy\\git\\net\\MQTTNetStart\\CabinetFaceWpf.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\opencvsharp4\\4.13.0.20260627\\opencvsharp4.4.13.0.20260627.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\opencvsharp4.runtime.win\\4.13.0.20260627\\opencvsharp4.runtime.win.4.13.0.20260627.nupkg.sha512",
