@@ -7,7 +7,7 @@ namespace CabinetFaceWpf;
 
 internal sealed class FaceDetector : IDisposable
 {
-    private const float ScoreThreshold = 0.35f;
+    private const float ScoreThreshold = 0.10f;
     private const float NmsThreshold = 0.45f;
     private const int MaxCandidatesBeforeNms = 300;
 
