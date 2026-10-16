@@ -1,12 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "kEmmI6sROhU=",
+  "dgSpecHash": "PCvAiInvpoE=",
   "success": true,
   "projectFilePath": "E:\\project\\hjy\\git\\net\\MQTTNetStart\\CabinetFaceWpf.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.ml.onnxruntime\\1.31.0\\microsoft.ml.onnxruntime.1.31.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.ml.onnxruntime.managed\\1.31.0\\microsoft.ml.onnxruntime.managed.1.31.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\opencvsharp4\\4.13.0.20260627\\opencvsharp4.4.13.0.20260627.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\opencvsharp4.runtime.win\\4.13.0.20260627\\opencvsharp4.runtime.win.4.13.0.20260627.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\opencvsharp4.wpfextensions\\4.13.0.20260627\\opencvsharp4.wpfextensions.4.13.0.20260627.nupkg.sha512"
+    "C:\\Users\\Administrator\\.nuget\\packages\\opencvsharp4.wpfextensions\\4.13.0.20260627\\opencvsharp4.wpfextensions.4.13.0.20260627.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.numerics.tensors\\9.0.0\\system.numerics.tensors.9.0.0.nupkg.sha512"
   ],
   "logs": []
 }

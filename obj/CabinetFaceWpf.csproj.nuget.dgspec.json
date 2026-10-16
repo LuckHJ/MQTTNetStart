@@ -46,6 +46,10 @@
           "framework": "net10.0-windows7.0",
           "targetAlias": "net10.0-windows",
           "dependencies": {
+            "Microsoft.ML.OnnxRuntime": {
+              "target": "Package",
+              "version": "[1.31.0, )"
+            },
             "OpenCvSharp4": {
               "target": "Package",
               "version": "[4.13.0.20260627, )"

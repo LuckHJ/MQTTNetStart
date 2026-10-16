@@ -109,21 +109,34 @@ public partial class CameraWindow : Window
 
     private void ReadFrameLoop(CancellationToken token)
     {
-        using var frame = new CV.Mat();
-        while (!token.IsCancellationRequested && _capture != null && _capture.IsOpened())
+        try
         {
-            if (!_capture.Read(frame)) continue;
-
-            try
+            using var detector = new FaceDetector(Path.Combine(AppContext.BaseDirectory, "best.onnx"));
+            using var frame = new CV.Mat();
+            while (!token.IsCancellationRequested && _capture != null && _capture.IsOpened())
             {
+                if (!_capture.Read(frame) || frame.Empty()) continue;
+
+                detector.DrawDetections(frame);
+
                 Dispatcher.Invoke(() =>
                 {
                     if (token.IsCancellationRequested) return;
                     imgCamera.Source = frame.ToWriteableBitmap();
                 });
             }
-            catch (TaskCanceledException) { break; }
-            catch (OperationCanceledException) { break; }
+        }
+        catch (Exception ex) when (!token.IsCancellationRequested)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                StopCapture();
+                imgCamera.Source = null;
+                _state = AppState.Idle;
+                UpdateUi();
+                MessageBox.Show($"人脸检测失败：{ex.Message}", "错误",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            });
         }
     }
 
