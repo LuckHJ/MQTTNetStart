@@ -9,7 +9,7 @@ namespace CabinetFaceWpf;
 
 internal sealed class FaceDetector : IDisposable
 {
-    private const float ScoreThreshold = 0.8f;
+    private const float ScoreThreshold = 0.25f;
     private const float NmsThreshold = 0.45f;
     private const int MaxCandidatesBeforeNms = 300;
     private static readonly Regex ClassLabelPattern = new(
