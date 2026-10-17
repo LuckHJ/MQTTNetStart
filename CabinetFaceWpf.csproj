@@ -16,7 +16,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="best.onnx" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="best.onnx"
+          CopyToOutputDirectory="PreserveNewest"
+          CopyToPublishDirectory="PreserveNewest" />
+    <None Update="Assets\PetActions\*.gif"
+          CopyToOutputDirectory="PreserveNewest"
+          CopyToPublishDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

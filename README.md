@@ -5,3 +5,5 @@
 上传接口为 `http://localhost:8080/api/updateFaceFeature`，以 multipart/form-data 的 `file` 字段发送 JPEG 图片。
 
 摄像头开启后会使用项目根目录的 `best.onnx` 实时检测并框选人脸。模型会自动复制到程序输出目录；部署时请确保 `best.onnx` 与程序一起发布。当前检测器适配 Ultralytics YOLO 导出的图像检测 ONNX 模型。
+
+桌宠动作 GIF 放在 `Assets/PetActions` 并会随构建复制到程序输出目录。启动和点击动作播放完成后切换至随机待机动作；桌宠会在屏幕工作区内定时随机移动，系统 60 秒无输入后进入睡眠，检测到鼠标或键盘输入后唤醒。移动间隔和睡眠时间可在 `MainWindow.xaml.cs` 顶部的行为配置常量中调整。

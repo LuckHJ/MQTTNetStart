@@ -24,6 +24,15 @@ E:\project\hjy\study\net\test\CabinetFaceWpf\bin\Debug\net10.0-windows\OpenCvSha
 E:\project\hjy\study\net\test\CabinetFaceWpf\bin\Debug\net10.0-windows\runtimes\win-x64\native\OpenCvSharpExtern.dll
 E:\project\hjy\study\net\test\CabinetFaceWpf\bin\Debug\net10.0-windows\runtimes\win-x64\native\opencv_videoio_ffmpeg4130_64.dll
 E:\project\hjy\study\net\test\CabinetFaceWpf\obj\Debug\net10.0-windows\CabinetF.91735B7D.Up2Date
+E:\project\hjy\git\net\MQTTNetStart\bin\Debug\net10.0-windows\Assets\PetActions\active-1.gif
+E:\project\hjy\git\net\MQTTNetStart\bin\Debug\net10.0-windows\Assets\PetActions\active-2.gif
+E:\project\hjy\git\net\MQTTNetStart\bin\Debug\net10.0-windows\Assets\PetActions\active-3.gif
+E:\project\hjy\git\net\MQTTNetStart\bin\Debug\net10.0-windows\Assets\PetActions\active.gif
+E:\project\hjy\git\net\MQTTNetStart\bin\Debug\net10.0-windows\Assets\PetActions\click.gif
+E:\project\hjy\git\net\MQTTNetStart\bin\Debug\net10.0-windows\Assets\PetActions\move.gif
+E:\project\hjy\git\net\MQTTNetStart\bin\Debug\net10.0-windows\Assets\PetActions\skill-1-loop.gif
+E:\project\hjy\git\net\MQTTNetStart\bin\Debug\net10.0-windows\Assets\PetActions\sleep.gif
+E:\project\hjy\git\net\MQTTNetStart\bin\Debug\net10.0-windows\Assets\PetActions\start.gif
 E:\project\hjy\git\net\MQTTNetStart\bin\Debug\net10.0-windows\best.onnx
 E:\project\hjy\git\net\MQTTNetStart\bin\Debug\net10.0-windows\CabinetFaceWpf.exe
 E:\project\hjy\git\net\MQTTNetStart\bin\Debug\net10.0-windows\CabinetFaceWpf.deps.json

@@ -1,4 +1,6 @@
 using System.IO;
+using System.Globalization;
+using System.Text.RegularExpressions;
 using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
 using CV = OpenCvSharp;
@@ -7,12 +9,17 @@ namespace CabinetFaceWpf;
 
 internal sealed class FaceDetector : IDisposable
 {
-    private const float ScoreThreshold = 0.10f;
+    private const float ScoreThreshold = 0.8f;
     private const float NmsThreshold = 0.45f;
     private const int MaxCandidatesBeforeNms = 300;
+    private static readonly Regex ClassLabelPattern = new(
+        "(?<index>\\d+)\\s*:\\s*['\"](?<name>[^'\"]+)['\"]",
+        RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
     private readonly InferenceSession _session;
     private readonly string _inputName;
+    private readonly int _faceClassIndex;
+    private readonly int _classCount;
     private readonly int _inputWidth;
     private readonly int _inputHeight;
     private readonly bool _channelsLast;
@@ -28,6 +35,7 @@ internal sealed class FaceDetector : IDisposable
         _session = new InferenceSession(modelPath);
         var input = _session.InputMetadata.First();
         _inputName = input.Key;
+        (_faceClassIndex, _classCount) = ReadFaceClass(_session.ModelMetadata.CustomMetadataMap);
 
         int[] dimensions = input.Value.Dimensions;
         _channelsLast = dimensions.Length == 4 && dimensions[^1] == 3;
@@ -66,10 +74,13 @@ internal sealed class FaceDetector : IDisposable
         bool featuresFirst = secondLast < last;
         int featureCount = featuresFirst ? secondLast : last;
         int candidateCount = featuresFirst ? last : secondLast;
-        if (featureCount < 5)
+        bool hasObjectness = featureCount == _classCount + 5;
+        if (!hasObjectness && featureCount != _classCount + 4)
         {
-            throw new InvalidDataException($"模型检测输出只有 {featureCount} 个特征，无法解析人脸框。");
+            throw new InvalidDataException(
+                $"模型输出有 {featureCount} 个特征，但模型类别数为 {_classCount}，无法解析人脸分数。");
         }
+        int classScoreOffset = hasObjectness ? 5 : 4;
 
         float[] values = output.ToArray();
         var boxes = new List<CV.Rect>();
@@ -101,22 +112,11 @@ internal sealed class FaceDetector : IDisposable
             if (!float.IsFinite(centerX) || !float.IsFinite(centerY) ||
                 !float.IsFinite(width) || !float.IsFinite(height)) continue;
 
-            float confidence;
-            if (featureCount == 6)
-            {
-                confidence =
-                    GetValue(values, featuresFirst, candidateCount, featureCount, candidate, 4) *
-                    GetValue(values, featuresFirst, candidateCount, featureCount, candidate, 5);
-            }
-            else
-            {
-                confidence = 0;
-                for (int feature = 4; feature < featureCount; feature++)
-                {
-                    confidence = Math.Max(confidence,
-                        GetValue(values, featuresFirst, candidateCount, featureCount, candidate, feature));
-                }
-            }
+            float faceScore = GetValue(
+                values, featuresFirst, candidateCount, featureCount, candidate, classScoreOffset + _faceClassIndex);
+            float confidence = hasObjectness
+                ? GetValue(values, featuresFirst, candidateCount, featureCount, candidate, 4) * faceScore
+                : faceScore;
 
             if (!float.IsFinite(confidence) || confidence < ScoreThreshold) continue;
 
@@ -221,6 +221,39 @@ internal sealed class FaceDetector : IDisposable
         return featuresFirst
             ? values[feature * candidateCount + candidate]
             : values[candidate * featureCount + feature];
+    }
+
+    private static (int FaceClassIndex, int ClassCount) ReadFaceClass(
+        IReadOnlyDictionary<string, string> metadata)
+    {
+        if (!metadata.TryGetValue("names", out string? labels))
+        {
+            throw new InvalidDataException("模型缺少 names 类别元数据，无法确定 face 类别索引。");
+        }
+
+        int? faceClassIndex = null;
+        int classCount = 0;
+        foreach (Match match in ClassLabelPattern.Matches(labels))
+        {
+            classCount++;
+            if (!int.TryParse(match.Groups["index"].Value, NumberStyles.None,
+                    CultureInfo.InvariantCulture, out int index))
+            {
+                continue;
+            }
+
+            if (string.Equals(match.Groups["name"].Value, "face", StringComparison.OrdinalIgnoreCase))
+            {
+                faceClassIndex = index;
+            }
+        }
+
+        if (faceClassIndex is null || faceClassIndex < 0 || faceClassIndex >= classCount)
+        {
+            throw new InvalidDataException($"模型类别元数据中未找到有效的 face 类别：{labels}");
+        }
+
+        return (faceClassIndex.Value, classCount);
     }
 
     public void Dispose() => _session.Dispose();

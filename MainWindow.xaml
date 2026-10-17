@@ -12,6 +12,7 @@
         ShowInTaskbar="False"
         WindowStartupLocation="Manual"
         Loaded="Window_Loaded"
+        PreviewMouseDown="Pet_PreviewMouseDown"
         MouseLeftButtonDown="Pet_MouseLeftButtonDown">
     <Grid Background="Transparent" ToolTip="右键打开桌宠菜单">
         <Grid.ContextMenu>
@@ -24,53 +25,7 @@
         </Grid.ContextMenu>
 
         <Viewbox Width="176" Height="210" VerticalAlignment="Top">
-            <Canvas Width="176" Height="210">
-                <Ellipse Canvas.Left="43" Canvas.Top="194" Width="90" Height="10"
-                         Fill="#26000000"/>
-
-                <Path Data="M 124,143 C 151,155 162,141 153,128"
-                      Stroke="#B95C39" StrokeThickness="12"
-                      StrokeStartLineCap="Round" StrokeEndLineCap="Round"
-                      Fill="Transparent"/>
-
-                <Path Data="M 40,61 L 43,19 Q 44,11 51,18 L 76,47 Z"
-                      Fill="#F39A56" Stroke="#B95C39" StrokeThickness="3"
-                      StrokeLineJoin="Round"/>
-                <Path Data="M 48,45 L 49,28 L 62,43 Z" Fill="#F5B2A4"/>
-                <Path Data="M 99,47 L 124,18 Q 130,11 132,20 L 137,62 Z"
-                      Fill="#F39A56" Stroke="#B95C39" StrokeThickness="3"
-                      StrokeLineJoin="Round"/>
-                <Path Data="M 113,43 L 127,27 L 129,47 Z" Fill="#F5B2A4"/>
-
-                <Ellipse Canvas.Left="42" Canvas.Top="97" Width="92" Height="94"
-                         Fill="#F6A45F" Stroke="#B95C39" StrokeThickness="4"/>
-                <Ellipse Canvas.Left="61" Canvas.Top="152" Width="30" Height="25"
-                         Fill="#FFE3C7" Stroke="#B95C39" StrokeThickness="2"/>
-                <Ellipse Canvas.Left="90" Canvas.Top="152" Width="30" Height="25"
-                         Fill="#FFE3C7" Stroke="#B95C39" StrokeThickness="2"/>
-
-                <Ellipse Canvas.Left="30" Canvas.Top="30" Width="116" Height="94"
-                         Fill="#FFB36D" Stroke="#B95C39" StrokeThickness="4"/>
-                <Ellipse Canvas.Left="59" Canvas.Top="69" Width="8" Height="13"
-                         Fill="#49342D"/>
-                <Ellipse Canvas.Left="109" Canvas.Top="69" Width="8" Height="13"
-                         Fill="#49342D"/>
-                <Ellipse Canvas.Left="42" Canvas.Top="91" Width="18" Height="9"
-                         Fill="#F18E89" Opacity="0.75"/>
-                <Ellipse Canvas.Left="116" Canvas.Top="91" Width="18" Height="9"
-                         Fill="#F18E89" Opacity="0.75"/>
-                <Path Data="M 82,91 Q 88,97 94,91 M 88,98 L 88,101 Q 83,106 79,102 M 88,101 Q 93,106 97,102"
-                      Stroke="#49342D" StrokeThickness="2.5"
-                      StrokeStartLineCap="Round" StrokeEndLineCap="Round"
-                      Fill="Transparent"/>
-
-                <Path Data="M 49,119 Q 88,139 127,119 L 117,134 Q 88,148 59,134 Z"
-                      Fill="#63BFA8" Stroke="#3B8E7C" StrokeThickness="2"
-                      StrokeLineJoin="Round"/>
-                <Path Data="M 88,136 L 99,151 L 87,158 L 78,150 Z"
-                      Fill="#63BFA8" Stroke="#3B8E7C" StrokeThickness="2"
-                      StrokeLineJoin="Round"/>
-            </Canvas>
+            <Image x:Name="GifPlayer" Width="176" Height="210" Stretch="Uniform"/>
         </Viewbox>
 
         <TextBlock Text="小橘 · 右键打开菜单"
